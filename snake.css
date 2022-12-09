@@ -8,6 +8,14 @@
 body{
     background-image:linear-gradient(to bottom right, rgba(79,51,176,1.0),rgb(239,228,231));
 }
+.description{
+    margin-left:100px;
+    margin-top:30px;
+    color:rgb(236, 68, 68);
+    font-size: 55px !important;
+
+
+}
 .container{
     height: 100vh;
 
@@ -54,9 +62,9 @@ background-color:rgb(247, 0, 255);
 }
 .snakePng{
     width: 600px;
-    height: 600px;
+    height: 580px;
     margin-left: -480px;
-    margin-top: -35px;
+    margin-top: -30px;
     padding: 15px;
 }
 div.option{

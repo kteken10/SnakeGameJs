@@ -43,6 +43,50 @@ const Chrono={
        
     }
 }
+
+//INITIALIZE AND CREATE THE SNAKE
+
+class Snake{
+    constructor(color,position_x,position_y) {
+        this.elem=document.createElement('div');
+        this.elem.id="snake";
+        this.color = color;
+        this.position_x = position_x;
+        this.position_y = position_y;
+        }
+
+    
+        defineColor(){
+
+        }
+        mooveSnake(){
+
+        }
+        snakeDetails(){
+            console.log(this.elem.id);
+        }
+}
+//INITIALIZE AND CREATE THE FOOD OF SNAKE
+class Food{
+    constructor(color,position_x,position_y) {
+        this.elem=document.createElement('div');
+       
+        this.color = color;
+        this.position_x = position_x;
+        this.position_y = position_y;
+        }
+        defineColor(){
+
+        }
+        mooveSnake(){
+
+        }
+        
+
+    
+}
 Round.setOnscreen();
 Chrono.setOnround();
+snake = new Snake('red',1,2);
+snake.snakeDetails()
 // var chrono=new Chrono('chrono1',dimens.ledposition_x,dimens.ledposition_y);
