@@ -3,14 +3,18 @@ const color = ['white', 'red', 'yellow','green'];
 // SET PARAMETER OF ROUND TO PLAY:
 var round =document.querySelector('#container');
 const Round={
-    width:(window.innerWidth)*0.6+'px',
-    height:(window.innerHeight)*3+'px',
+    width:(window.innerWidth)*0.6,
+    height:(window.innerHeight)*3,
     setOnscreen:roundSet=>{
-        round.style.width=Round.width;
-        round.style.height=Round.height;
+        round.style.width=Round.width+'px';
+        round.style.height=Round.height+'px';
     },
     getDimension:dimens=>{
-        return [Round.width, Round.height]
+        // dimens dimension depending of Object what we want to display
+       if( dimens == "snake"){
+        return [(Round.width)/35, Round.height/60]
+
+       }    
     }
 }
 // CREATE THE CHRONO OBJECT AND INITIALIZE IT:
@@ -19,13 +23,13 @@ const Chrono={
     height : (window.innerHeight)/10+'px',
     setOnround  : roundSet=>{
         let chrono = document.createElement("div");
-        chrono.id   =  'chrono';
+        chrono.style.position="absolute";
+        chrono.id  = 'chrono';
         round.appendChild(chrono);
-        let  getDimension=    Round.getDimension();
         chrono.style.marginLeft =  0+'px';
         chrono.style.marginTop  =  0+'px';
-        var chrono_start    =0;
-        var chrono_end  =4;
+        var chrono_start = 0;
+        var chrono_end = 4;
        
         var myChrono = setInterval(() => { 
             chrono.innerHTML  = '<h1 id="chronoNumber">' +   chrono_start+   '</h1>'; 
@@ -44,34 +48,52 @@ const Chrono={
     }
 }
 
+// FUNCTION TO RANDOM COLOR OF SNAKE AND FOOD
+
+function   setColor(){
+    const color = ['red','green','blue','yellow','purple','orange','pink'];
+    choice_color = color [Math.round(Math.random()*color.length-1)]
+    console.log(choice_color);
+    return choice_color;      
+}
+
 //INITIALIZE AND CREATE THE SNAKE
 
+
+
+
 class Snake{
-    constructor(color,position_x,position_y) {
-        this.elem=document.createElement('div');
-        this.elem.id="snake";
-        this.color = color;
-        this.position_x = position_x;
-        this.position_y = position_y;
+    
+    constructor() {
+        this.headSnake=[document.createElement('div')];
+        round.appendChild(this.headSnake[0]);
+        this.headSnake[0].id="snake";
+        const snake_parameter = {
+            headSnakePosition_x:Round.getDimension("snake")[0],
+            headSnakePosition_y:Round.getDimension("snake")[1]
         }
+    }
 
     
-        defineColor(){
+   
+    setOnRound(){
+        this.headSnake[0].style.backgroundColor = setColor();
+        this.headSnake[0].style.width = Round.getDimension("snake")[0]+'px';
+        this.headSnake[0].style.height = Round.getDimension("snake")[1]+'px';
+        this.headSnake[0].style.border = '1px solid blue';
+        
+    }
+    mooveSnake(){
 
-        }
-        mooveSnake(){
-
-        }
+    }
         snakeDetails(){
-            console.log(this.elem.id);
+            console.log(this.headSnake);
         }
 }
 //INITIALIZE AND CREATE THE FOOD OF SNAKE
 class Food{
-    constructor(color,position_x,position_y) {
-        this.elem=document.createElement('div');
-       
-        this.color = color;
+    constructor(position_x,position_y) {
+        // this.headSnake[0]=document.createElement('div');
         this.position_x = position_x;
         this.position_y = position_y;
         }
@@ -87,6 +109,7 @@ class Food{
 }
 Round.setOnscreen();
 Chrono.setOnround();
-snake = new Snake('red',1,2);
-snake.snakeDetails()
+let snake = new Snake('red',1,2);
+snake.snakeDetails();
+snake.setOnRound();
 // var chrono=new Chrono('chrono1',dimens.ledposition_x,dimens.ledposition_y);
