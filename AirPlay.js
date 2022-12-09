@@ -15,32 +15,32 @@ const Round={
 }
 // CREATE THE CHRONO OBJECT AND INITIALIZE IT:
 const Chrono={
-    width:(window.innerWidth)/40+'px',
-    height:(window.innerHeight)/40+'px',
-    setOnround:roundSet=>{
-        let ledposition_x=100+'px';
-        let ledposition_y=100+'px';
+    width :  (window.innerWidth)/20+'px',
+    height : (window.innerHeight)/10+'px',
+    setOnround  : roundSet=>{
         let chrono = document.createElement("div");
-        chrono.id='chrono';
+        chrono.id   =  'chrono';
         round.appendChild(chrono);
-        let  dimens=Round.getDimension();
-        chrono.style.marginLeft=ledposition_x;
-        chrono.style.marginTop=ledposition_y;
-        var chrono_start=0;
-        var chrono_end=4;
+        let  getDimension=    Round.getDimension();
+        chrono.style.marginLeft =  0+'px';
+        chrono.style.marginTop  =  0+'px';
+        var chrono_start    =0;
+        var chrono_end  =4;
        
         var myChrono = setInterval(() => { 
-            chrono.innerHTML='<h1 id="chrono">'+chrono_start+'</h1>'; 
-            chrono.style.backgroundColor=color[chrono_start];
-            chrono.style.position="absolute";
+            chrono.innerHTML  = '<h1 id="chronoNumber">' +   chrono_start+   '</h1>'; 
+            let chronoNUmber = document.getElementById('chronoNumber');
+            chronoNUmber.style.fontSize='43px';
+            chrono.style.backgroundColor = color[chrono_start];
+            chrono.style.width  =  Chrono.width;
+            chrono.style.height = Chrono.height;
             chrono_start+=1;
             if ( chrono_start > chrono_end){
                 chrono.remove();
                 clearInterval(myChrono);
             }
             }, 1200);
-        // round.style.width=Round.width;
-        // round.style.height=Round.height;
+       
     }
 }
 Round.setOnscreen();
