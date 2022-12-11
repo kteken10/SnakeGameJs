@@ -1,5 +1,5 @@
 # FULL COMPLETE SNAKE GAME IN VANILA JS:
-### this program is a game enhanced of completely in Vanilla Js, HTML, and CSS for aim of operating the maximum of poo in JS<br> <br>
+### this program is a game enhanced of completely in Vanilla Js, HTML, and CSS for aim of operating the maximum of poo in JS<br>  <br>
 
 ## GETTING STARTED:
 

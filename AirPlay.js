@@ -1,5 +1,9 @@
 // DEFINE COLOR OF CHRONO COUNT:
 const color = ['white', 'red', 'yellow','green'];
+
+const emoticon =['😝','❤','💛','🧡','💣','🦊',
+                 '🐯','🐼','🍺','🍧','🍦','🥮', 
+                 '🧭','⭐️','🌟','☄️','🔊','💶','💊']
 // SET PARAMETER OF ROUND TO PLAY:
 var round =document.querySelector('#container');
 const Round={
@@ -140,15 +144,13 @@ class Snake{
 }
 //INITIALIZE AND CREATE THE FOOD OF SNAKE:
 class Food{
-    constructor(position_x,position_y) {
-        // this.headSnake[0]=document.createElement('div');
-        this.headSnakePosition_x = position_x;
-        this.headSnakePosition_y = position_y;
+    constructor() {
+        const allFoods=['🍇','🍈','🍉','🍊','🍋','🍌','🍍','🥭','🍎','🍏','🍐','🍑','🍒','🍓','🥜']
         }
         defineColor(){
 
         }
-        mooveSnake(){
+        Random(){
 
         }
 }
