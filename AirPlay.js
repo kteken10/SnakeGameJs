@@ -45,15 +45,23 @@ const Chrono={
     }
 }
 
-// FUNCTION TO RANDOM COLOR OF SNAKE AND FOOD
+// FUNCTION TO RANDOM COLOR OF SNAKE AND FOOD:
 
 function   setColor(){
-    const color = ['red','green','blue','yellow','purple','orange','pink'];
+    const color = [ 'rgb(255, 187, 0)',
+                    'rgba(255, 0, 234, 0.89)',
+                    'rgb(0, 255, 21)',
+                    'rgba(0, 81, 255, 0.342)',
+                    'rgb(0, 255, 255)',
+                    'rgb(255, 102, 0)',
+                    'rgb(255, 0, 0)',
+                    'rgba(255, 0, 0, 0.534)'];
     choice_color = color [Math.round(Math.random()*color.length-1)]
     return choice_color;      
 }
 
 //FUNCTION TO RETURN THE KEYBOARD KEY PRESSED:
+
 function getKeyboardPress(){
    
 }
@@ -65,16 +73,10 @@ class Snake{
         round.appendChild(this.headSnake[0]);
         this.headSnake[0].id="snake";
         this.direction ='gauche';
-        this.position_x = 400;
-        this.position_y = 238;
-        this.headSnake[0].style.left=this.position_x+'px';
-        this.headSnake[0].style.top=this.position_y+'px';
-       
-    }
-    getDimension(){ 
-        const width = this.headSnake[0].style.width.replace('px', '');
-        const height = this.headSnake[0].style.height.replace('px', '');
-        return { width: width, height: height };
+        this.headSnakePosition_x = 400;
+        this.headSnakePosition_y = 238;
+        this.headSnake[0].style.left=this.headSnakePosition_x+'px';
+        this.headSnake[0].style.top=this.headSnakePosition_y+'px';
     }
     setOnRound(){
         this.headSnake[0].style.backgroundColor = setColor();
@@ -86,62 +88,62 @@ class Snake{
     moveToRound(){
         
         var myChrono = setInterval(() => { 
-            this.position_x = this.position_x;
-            this.position_y = this.position_y; 
+            this.headSnakePosition_x = this.headSnakePosition_x;
+            this.headSnakePosition_y = this.headSnakePosition_y; 
             switch (this.direction) {   
                 case 'gauche':
-                    if(this.position_x >= -400){
-                        this.position_x -= 20;
-                        if(this.position_x == -420){
-                            this.position_x = 400;
-                            this.headSnake[0].style.left = this.position_x+'px';
+                    if(this.headSnakePosition_x >= -400){
+                        this.headSnakePosition_x -= 20;
+                        if(this.headSnakePosition_x == -420){
+                            this.headSnakePosition_x = 400;
+                            this.headSnake[0].style.left = this.headSnakePosition_x+'px';
                         }             
                     }
                        break;
                 case 'droite':
-                    if(this.position_x <= 400){
-                        this.position_x += 20;
-                        if(this.position_x == 420){
-                            this.position_x = -400;
-                            this.headSnake[0].style.left = this.position_x+'px';
+                    if(this.headSnakePosition_x <= 400){
+                        this.headSnakePosition_x += 20;
+                        if(this.headSnakePosition_x == 420){
+                            this.headSnakePosition_x = -400;
+                            this.headSnake[0].style.left = this.headSnakePosition_x+'px';
                         }                                              
                     }
                     break; 
                 case 'bas':
-                    if(this.position_y <= 240){
-                        this.position_y += 28;
-                        if(this.position_y >= 264){
-                            this.position_y = -238;
-                            this.headSnake[0].style.top = this.position_y+'px';
+                    if(this.headSnakePosition_y <= 240){
+                        this.headSnakePosition_y += 28;
+                        if(this.headSnakePosition_y >= 264){
+                            this.headSnakePosition_y = -238;
+                            this.headSnake[0].style.top = this.headSnakePosition_y+'px';
                         }
                     }
                     break;  
                 case 'haut':
-                    if(this.position_y >= -240){
-                        this.position_y -= 28;
-                        if(this.position_y <= -264){
-                            this.position_y = 238;
-                            this.headSnake[0].style.top = this.position_y+'px';
+                    if(this.headSnakePosition_y >= -240){
+                        this.headSnakePosition_y -= 28;
+                        if(this.headSnakePosition_y <= -264){
+                            this.headSnakePosition_y = 238;
+                            this.headSnake[0].style.top = this.headSnakePosition_y+'px';
                         }
                     }
                     break;    
                 default:
                     break;
             }
-                this.headSnake[0].style.left = this.position_x+'px';
-                this.headSnake[0].style.top = this.position_y+'px';
+                this.headSnake[0].style.left = this.headSnakePosition_x+'px';
+                this.headSnake[0].style.top = this.headSnakePosition_y+'px';
             }, 500);
     }
         snakeDetails(){
             console.log(this.headSnake[0]);
         }
 }
-//INITIALIZE AND CREATE THE FOOD OF SNAKE
+//INITIALIZE AND CREATE THE FOOD OF SNAKE:
 class Food{
     constructor(position_x,position_y) {
         // this.headSnake[0]=document.createElement('div');
-        this.position_x = position_x;
-        this.position_y = position_y;
+        this.headSnakePosition_x = position_x;
+        this.headSnakePosition_y = position_y;
         }
         defineColor(){
 
