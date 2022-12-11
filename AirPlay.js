@@ -64,11 +64,14 @@ function   setColor(){
     return choice_color;      
 }
 
-//FUNCTION TO RETURN THE KEYBOARD KEY PRESSED:
+//FUNCTION THAT RETURNS THE SNAKE DIRECTION ACCORDING TO THE KEYBOARD KEY
 
 function getKeyboardPress(){
-   
+    let KEYBOARD=document.addEventListener('keydown', event => {
+        snake.direction=event.code;
+    });
 }
+
 
 class Snake{
     
@@ -76,7 +79,7 @@ class Snake{
         this.headSnake=[document.createElement('div')];
         round.appendChild(this.headSnake[0]);
         this.headSnake[0].id="snake";
-        this.direction ='gauche';
+        this.direction ='ArrowRight';
         this.headSnakePosition_x = 400;
         this.headSnakePosition_y = 238;
         this.headSnake[0].style.left=this.headSnakePosition_x+'px';
@@ -95,7 +98,7 @@ class Snake{
             this.headSnakePosition_x = this.headSnakePosition_x;
             this.headSnakePosition_y = this.headSnakePosition_y; 
             switch (this.direction) {   
-                case 'gauche':
+                case 'ArrowLeft':
                     if(this.headSnakePosition_x >= -400){
                         this.headSnakePosition_x -= 20;
                         if(this.headSnakePosition_x == -420){
@@ -104,7 +107,7 @@ class Snake{
                         }             
                     }
                        break;
-                case 'droite':
+                case 'ArrowRight':
                     if(this.headSnakePosition_x <= 400){
                         this.headSnakePosition_x += 20;
                         if(this.headSnakePosition_x == 420){
@@ -113,7 +116,7 @@ class Snake{
                         }                                              
                     }
                     break; 
-                case 'bas':
+                case 'ArrowDown':
                     if(this.headSnakePosition_y <= 240){
                         this.headSnakePosition_y += 28;
                         if(this.headSnakePosition_y >= 264){
@@ -122,7 +125,7 @@ class Snake{
                         }
                     }
                     break;  
-                case 'haut':
+                case 'ArrowUp':
                     if(this.headSnakePosition_y >= -240){
                         this.headSnakePosition_y -= 28;
                         if(this.headSnakePosition_y <= -264){
@@ -136,10 +139,10 @@ class Snake{
             }
                 this.headSnake[0].style.left = this.headSnakePosition_x+'px';
                 this.headSnake[0].style.top = this.headSnakePosition_y+'px';
-            }, 500);
+            }, 200);
     }
         snakeDetails(){
-            console.log(this.headSnake[0]);
+            // console.log(this.headSnake[0]);
         }
 }
 //INITIALIZE AND CREATE THE FOOD OF SNAKE:
@@ -154,11 +157,18 @@ class Food{
 
         }
 }
+//SET THE ROUND ON THE SCREEN 
 Round.setOnscreen();
+// SET THE CHRONO ON THE SCREEN
 Chrono.setOnround();
+// CREATE AN INSTANCE OF SNAKE
 let snake = new Snake('red',1,2);
 snake.snakeDetails();
+// SET THE SNAKE ON ROUND
 snake.setOnRound();
+// MOVE SNAKE TO
 snake.moveToRound();
-// var chrono=new Chrono('chrono1',dimens.ledposition_x,dimens.ledposition_y);
+// GET THE KEYBOARD DIRECTION
+getKeyboardPress();
+
 
